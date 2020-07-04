@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">athelas BLE Java</string>
+    <string name="bluetooth_off">Bluetooth OFF</string>
+    <string name="bluetooth_on">Bluetooth ON</string>
+
+    <string-array name="devices">
+        <item>None (retract arm)</item>
+        <item>Stethoscope</item>
+        <item>Pulse Oximeter</item>
+        <item>Thermometer</item>
+    </string-array>
+</resources>
