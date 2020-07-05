@@ -3,9 +3,10 @@
     <string name="bluetooth_off">Bluetooth OFF</string>
     <string name="bluetooth_on">Bluetooth ON</string>
     <string name="toggle_bt">Toggle BT</string>
-    <string name="toggle_discovery">Toggle Discovery</string>
+    <string name="toggle_discovery">Toggle Discoverable</string>
+    <string name="discover">Discover</string>
 
-    <string-array name="devices">
+    <string-array name="athelasDevices">
         <item>None (retract arm)</item>
         <item>Stethoscope</item>
         <item>Pulse Oximeter</item>
