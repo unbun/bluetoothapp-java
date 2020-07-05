@@ -2,6 +2,8 @@
     <string name="app_name">athelas BLE Java</string>
     <string name="bluetooth_off">Bluetooth OFF</string>
     <string name="bluetooth_on">Bluetooth ON</string>
+    <string name="toggle_bt">Toggle BT</string>
+    <string name="toggle_discovery">Toggle Discovery</string>
 
     <string-array name="devices">
         <item>None (retract arm)</item>
