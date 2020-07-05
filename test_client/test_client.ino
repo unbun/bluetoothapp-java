@@ -60,6 +60,8 @@ void do_Uart_Tick()
     buffUARTIndex = 0;
 
     lcd.setCursor(0,1);
+    lcd.print("                ");
+    lcd.setCursor(0,1);
     lcd.print(buffUART);
 
     Serial.print("[");
