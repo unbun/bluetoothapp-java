@@ -4,43 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="SmallSp">
 
-    <Spinner
-        android:id="@+id/deviceSpinner"
-        android:layout_width="343dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="16dp"
-        android:entries="@array/devices"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Button
+        android:id="@+id/enableDisableBT"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/toggle_bt"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/enableDisableDiscoverable"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btOn"
+        android:id="@+id/enableDisableDiscoverable"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/bluetooth_on"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btOff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btOff" />
+        android:layout_height="47dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginRight="128dp"
+        android:onClick="enableDisableDiscoverability"
+        android:text="@string/toggle_discovery"
+        android:textSize="10sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/enableDisableBT"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btOff"
+        android:id="@+id/btnFindUnpairedDevices"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="btDiscover"
+        android:text="@string/discover"
+        android:textSize="10sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/enableDisableDiscoverable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/enableDisableDiscoverable" />
+
+    <ListView
+        android:id="@+id/lvNewDevices"
+        android:layout_width="333dp"
+        android:layout_height="149dp"
+        android:layout_below="@id/btnFindUnpairedDevices"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStartConnection" />
+
+    <Button
+        android:id="@+id/btnStartConnection"
+        android:layout_width="158dp"
+        android:layout_height="47dp"
+        android:layout_below="@+id/btnFindUnpairedDevices"
+        android:layout_marginTop="36dp"
+        android:text="@string/start_connection"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enableDisableBT" />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lvNewDevices"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="56dp"
-        android:text="@string/bluetooth_off"
-        app:layout_constraintEnd_toStartOf="@+id/btOn"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginTop="44dp"
+        android:layout_toEndOf="@+id/editText"
+        android:layout_toRightOf="@+id/editText"
+        android:text="@string/send"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deviceSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/lvNewDevices" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="265dp"
+        android:layout_height="47dp"
+        android:layout_below="@+id/lvNewDevices"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:autofillHints=""
+        android:hint="@string/enter_text_here"
+        android:inputType="date|textUri|textShortMessage|textLongMessage|textAutoCorrect|numberSigned|textVisiblePassword|textWebEditText|textMultiLine|textNoSuggestions|textFilter|number|datetime|textWebEmailAddress|textPersonName|text|textPhonetic|textCapSentences|textPassword|textAutoComplete|textImeMultiLine|textPostalAddress|numberDecimal|textEmailAddress|numberPassword|textCapWords|phone|textEmailSubject|textCapCharacters|time|textWebPassword"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSend"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
