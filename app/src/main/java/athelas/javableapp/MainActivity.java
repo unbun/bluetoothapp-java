@@ -1,6 +1,7 @@
 package athelas.javableapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.os.Bundle;
 import android.Manifest;
@@ -18,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -44,7 +46,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button btnStartConnection;
     Button btnSend;
     EditText etSend;
+    TextView tvIncomingMessages;
 
+    StringBuilder readMessages;
     public ArrayList<BluetoothDevice> mBTDevicesList;
     public DeviceListAdapter mDeviceListAdapter;
     ListView lvNewDevices;
@@ -153,12 +157,37 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     };
 
+    private BroadcastReceiver mReadReciever = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String text = intent.getStringExtra("data");
+
+            // asynchronized problems require some kind of "end of file" message
+            // to make sure the whole message gets through and is displayed properly
+            boolean completedMessage = false;
+            readMessages.append(text);
+            if(readMessages.toString().endsWith("EOF")){
+                readMessages.setLength(readMessages.length() - 3);
+                completedMessage = true;
+            }
+
+            tvIncomingMessages.setText(readMessages);
+
+            if(completedMessage) {
+                readMessages = new StringBuilder();
+            }
+
+
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mBTDevicesList = new ArrayList<>();
+        readMessages = new StringBuilder();
 
         // UI Elements
         Button btnOnOff = (Button) findViewById(R.id.enableDisableBT);
@@ -167,7 +196,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
         btnSend = (Button) findViewById(R.id.btnSend);
         etSend = (EditText) findViewById(R.id.editText);
+        tvIncomingMessages = (TextView) findViewById(R.id.incomingMessages);
 
+        //Use local broadcast manager to recieve incoming messages
+        LocalBroadcastManager.getInstance(this).registerReceiver(mReadReciever, new IntentFilter("incomingMessage"));
 
         //Broadcastes when bond state changes (i.e. pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
@@ -197,6 +229,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(View view) {
                 byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
                 mBTConnection.write(bytes);
+
+                etSend.setText("");
             }
         });
     }
@@ -258,6 +292,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void btDiscover(View view) {
+        mBTDevicesList = new ArrayList<>();
+        mDeviceListAdapter = new DeviceListAdapter(MainActivity.this, R.layout.device_adapter_view, mBTDevicesList);
+        lvNewDevices.setAdapter(mDeviceListAdapter);
+
+
         Log.d(TAG, "btDiscover: Looking for unpaired devices.");
 
         if(mBtAdapter.isDiscovering()) {
