@@ -1,4 +1,4 @@
-package athelas.javableapp;
+package athelas.javableapp.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.nio.charset.Charset;
+
+import athelas.javableapp.BluetoothConnectionService;
+import athelas.javableapp.R;
 
 public class LiveVitalsActivity extends AppCompatActivity {
 

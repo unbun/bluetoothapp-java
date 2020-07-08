@@ -20,9 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RobotControlActivity"></activity>
-        <activity android:name=".LiveVitalsActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.RobotControlActivity"></activity>
+        <activity android:name=".activities.LiveVitalsActivity" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

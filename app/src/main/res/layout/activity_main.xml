@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".activities.MainActivity"
     tools:ignore="SmallSp">
 
 
     <Button
         android:id="@+id/enableDisableDiscoverable"
-        android:layout_width="119dp"
-        android:layout_height="47dp"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
         android:onClick="enableDisableDiscoverability"
         android:text="@string/toggle_discovery"
         android:textSize="10sp"
@@ -37,7 +37,7 @@
 
     <Button
         android:id="@+id/btnFindUnpairedDevices"
-        android:layout_width="119dp"
+        android:layout_width="118dp"
         android:layout_height="wrap_content"
         android:onClick="btDiscover"
         android:text="@string/discover"

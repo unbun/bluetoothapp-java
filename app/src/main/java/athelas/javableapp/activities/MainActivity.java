@@ -1,4 +1,4 @@
-package athelas.javableapp;
+package athelas.javableapp.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +22,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.UUID;
+
+import athelas.javableapp.BluetoothConnectionService;
+import athelas.javableapp.DeviceListAdapter;
+import athelas.javableapp.R;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String TAG = "MainActivity";
