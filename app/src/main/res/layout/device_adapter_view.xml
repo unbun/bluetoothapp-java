@@ -5,16 +5,23 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tvDeviceName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvDeviceName"
-        android:textSize="15sp"/>
+        android:background="#2196F3"
+        android:text="device name"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textAllCaps="true" />
 
     <TextView
+        android:id="@+id/tvDeviceAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvDeviceAddress"
-        android:textSize="15sp"/>
+        android:background="#2196F3"
+        android:text="device address"
+        android:textColor="#C4D0D1"
+        android:textSize="15sp" />
 
 
 </LinearLayout>

@@ -7,55 +7,62 @@
     tools:context=".MainActivity"
     tools:ignore="SmallSp">
 
-    <Button
-        android:id="@+id/enableDisableBT"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/toggle_bt"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toStartOf="@+id/enableDisableDiscoverable"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSend" />
 
     <Button
         android:id="@+id/enableDisableDiscoverable"
-        android:layout_width="0dp"
+        android:layout_width="119dp"
         android:layout_height="47dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginRight="124dp"
         android:onClick="enableDisableDiscoverability"
         android:text="@string/toggle_discovery"
         android:textSize="10sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/enableDisableBT"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/enableDisableBT"
+        app:layout_constraintEnd_toStartOf="@+id/btnFindUnpairedDevices"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/enableDisableBT"
+        app:layout_constraintTop_toTopOf="@+id/enableDisableBT"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/enableDisableBT"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="@string/toggle_bt"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/enableDisableDiscoverable"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnFindUnpairedDevices"
-        android:layout_width="0dp"
+        android:layout_width="119dp"
         android:layout_height="wrap_content"
         android:onClick="btDiscover"
         android:text="@string/discover"
         android:textSize="10sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/enableDisableDiscoverable"
+        app:layout_constraintBottom_toBottomOf="@+id/enableDisableDiscoverable"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/enableDisableDiscoverable" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/enableDisableDiscoverable"
+        app:layout_constraintTop_toTopOf="@+id/enableDisableDiscoverable"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ListView
         android:id="@+id/lvNewDevices"
-        android:layout_width="0dp"
-        android:layout_height="149dp"
+        android:layout_width="331dp"
+        android:layout_height="147dp"
         android:layout_below="@id/btnFindUnpairedDevices"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="#D1F5FA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="#1566A6"
+        app:layout_constraintEnd_toEndOf="@+id/enableDisableDiscoverable"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/enableDisableDiscoverable"
         app:layout_constraintTop_toBottomOf="@+id/enableDisableDiscoverable" />
 
     <Button
@@ -63,65 +70,38 @@
         android:layout_width="158dp"
         android:layout_height="47dp"
         android:layout_below="@+id/btnFindUnpairedDevices"
+        android:layout_marginTop="12dp"
         android:text="@string/start_connection"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/lvNewDevices"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/lvNewDevices"
         app:layout_constraintTop_toBottomOf="@+id/lvNewDevices" />
 
     <Button
-        android:id="@+id/btnSend"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lvNewDevices"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_toEndOf="@+id/editText"
-        android:layout_toRightOf="@+id/editText"
-        android:text="@string/send"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incomingMessages" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="258dp"
-        android:layout_height="51dp"
-        android:layout_below="@+id/lvNewDevices"
-        android:layout_alignParentStart="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:autofillHints=""
-        android:hint="@string/enter_text_here"
-        android:inputType="date|textUri|textShortMessage|textLongMessage|textAutoCorrect|numberSigned|textVisiblePassword|textWebEditText|textMultiLine|textNoSuggestions|textFilter|number|datetime|textWebEmailAddress|textPersonName|text|textPhonetic|textCapSentences|textPassword|textAutoComplete|textImeMultiLine|textPostalAddress|numberDecimal|textEmailAddress|numberPassword|textCapWords|phone|textEmailSubject|textCapCharacters|time|textWebPassword"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnSend"
+        android:id="@+id/btToVitalsBtn"
+        android:layout_width="118dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="false"
+        android:text="@string/live_vitals_cont"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_alignParentLeft="true" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/incomingMessages"
-        android:layout_width="0dp"
-        android:layout_height="144dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="#03A9F4"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/incoming_messages"
-        android:textColor="#FFFFFF"
+        android:id="@+id/connectionInstructions"
+        android:layout_width="262dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:text="@string/connection_instructions"
+        android:textAllCaps="false"
+        android:textColor="#2484C2"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnStartConnection" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
