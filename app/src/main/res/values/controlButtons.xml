@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="robotView1Des">3D View of Robot</string>
+    <string name="robotView2Des">Side View of Robot</string>
+    <string name="j0NegBtnDes">-J0</string>
+    <string name="j0PosBtnDes">+J0</string>
+    <string name="j1PosBtnDes">+J1</string>
+    <string name="j1NegBtnDes">-J1</string>
+    <string name="j2PosBtnDes">+J2</string>
+    <string name="j2NegBtnDes">-J2</string>
+    <string name="j3PosBtnDes">+J3</string>
+    <string name="j3NegBtnDes">-J3</string>
+</resources>

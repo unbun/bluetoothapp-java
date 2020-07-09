@@ -1,19 +1,46 @@
 <resources>
     <string name="app_name">athelas BLE Java</string>
-    <string name="bluetooth_off">Bluetooth OFF</string>
-    <string name="bluetooth_on">Bluetooth ON</string>
-    <string name="toggle_bt">1) BLE On/OFF</string>
-    <string name="toggle_discovery">2) Discovery On/Off</string>
-    <string name="discover">3) Discover</string>
-    <string name="start_connection">5) Start Connection</string>
-    <string name="enter_text_here">Enter Text Here</string>
-    <string name="send">6) SEND</string>
-    <string name="incoming_messages">Incoming Messages</string>
+    <string name="toggle_bt">BT On/OFF</string>
+    <string name="toggle_discovery">Enable Discovery</string>
+    <string name="discover">Search</string>
+    <string name="start_connection">Connect</string>
+    <string name="outgoing_data">Enter Data Here</string>
+    <string name="send">Send</string>
+    <string name="incoming_data">Incoming Data</string>
+    <string name="live_vitals_cont"><![CDATA[Live Vitals >]]></string>
+    <string name="live_vitals_back"><![CDATA[< Live Vitals]]></string>
+    <string name="connect"><![CDATA[< Connect]]></string>
+    <string name="connection_instructions">Step 1) Turn Bluetooth on\nStep 2) Enable Discovery\nStep 3) Search for Devices\nStep 4) Select Device To Pair\nStep 5) Start Connection</string>
+    <string name="robot"><![CDATA[Robot >]]></string>
+    <string name="robot_control_page">Robot Control Page</string>
+    <string name="go_to_vitals">Go To Vitals</string>
+    <string name="go_to_connect_screen">Go To Connect Screen</string>
+    <string name="go_to_robot_control">Go To Robot Control</string>
+    <string name="camera_feed_filler">camera_feed_filler</string>
+    <string name="tilt_speed">tilt speed</string>
+    <string name="retract">Retract</string>
+    <string name="stop">Stop</string>
+    <string name="base_speed">base speed</string>
+    <string name="wrist_speed">wrist speed</string>
+    <string name="elbow_speed">elbow speed</string>
+    <string name="patient">Patient</string>
 
     <string-array name="devices">
         <item>None (retract arm)</item>
         <item>Stethoscope</item>
         <item>Pulse Oximeter</item>
         <item>Thermometer</item>
+    </string-array>
+
+    <string-array name="targets">
+        <item>None (Stop)</item>
+        <item>None (Retract)</item>
+        <item>Forehead</item>
+        <item>Chest</item>
+        <item>Hand</item>
+    </string-array>
+
+    <string-array name="preloaded_patients">
+        <item>Unnas Hussain</item>
     </string-array>
 </resources>

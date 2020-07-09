@@ -39,6 +39,7 @@ public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
             if (deviceAdress != null) {
                 deviceAdress.setText(device.getAddress());
             }
+
         }
 
         return convertView;

@@ -1,8 +1,9 @@
-package athelas.javableapp;
+package athelas.javableapp.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -17,17 +18,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.UUID;
 
-// https://www.youtube.com/watch?v=y8R2C86BIUc&list=PLgCYzUzKIBE8KHMzpp6JITZ2JxTgWqDH2
-// https://developer.android.com/reference/android/bluetooth/BluetoothDevice
-// https://developer.android.com/guide/topics/connectivity/bluetooth
+import athelas.javableapp.BluetoothConnectionService;
+import athelas.javableapp.DeviceListAdapter;
+import athelas.javableapp.R;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String TAG = "MainActivity";
@@ -40,15 +40,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     BluetoothDevice mBTDevice;
 
     BluetoothAdapter mBtAdapter = BluetoothAdapter.getDefaultAdapter();
-    BluetoothConnectionService mBTConnection;
+    private static BluetoothConnectionService mBTConnection;
 
     Button btnToggleDiscoverable;
     Button btnStartConnection;
-    Button btnSend;
-    EditText etSend;
-    TextView tvIncomingMessages;
 
-    StringBuilder readMessages;
     public ArrayList<BluetoothDevice> mBTDevicesList;
     public DeviceListAdapter mDeviceListAdapter;
     ListView lvNewDevices;
@@ -157,49 +153,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     };
 
-    private BroadcastReceiver mReadReciever = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String text = intent.getStringExtra("data");
-
-            // asynchronized problems require some kind of "end of file" message
-            // to make sure the whole message gets through and is displayed properly
-            boolean completedMessage = false;
-            readMessages.append(text);
-            if(readMessages.toString().endsWith("EOF")){
-                readMessages.setLength(readMessages.length() - 3);
-                completedMessage = true;
-            }
-
-            tvIncomingMessages.setText(readMessages);
-
-            if(completedMessage) {
-                readMessages = new StringBuilder();
-            }
-
-
-        }
-    };
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("athelas Device Pairing");
+
+        onCreateActSwitch();
         mBTDevicesList = new ArrayList<>();
-        readMessages = new StringBuilder();
 
         // UI Elements
         Button btnOnOff = (Button) findViewById(R.id.enableDisableBT);
         btnToggleDiscoverable = (Button) findViewById(R.id.enableDisableDiscoverable);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         btnStartConnection = (Button) findViewById(R.id.btnStartConnection);
-        btnSend = (Button) findViewById(R.id.btnSend);
-        etSend = (EditText) findViewById(R.id.editText);
-        tvIncomingMessages = (TextView) findViewById(R.id.incomingMessages);
+        btnStartConnection.setEnabled(false);
 
-        //Use local broadcast manager to recieve incoming messages
-        LocalBroadcastManager.getInstance(this).registerReceiver(mReadReciever, new IntentFilter("incomingMessage"));
 
         //Broadcastes when bond state changes (i.e. pairing)
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
@@ -220,17 +189,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 startConnection();
-            }
-        });
-
-        // when you want to send text to the connection service
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
-                mBTConnection.write(bytes);
-
-                etSend.setText("");
             }
         });
     }
@@ -254,6 +212,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void startBTConnection(BluetoothDevice device, UUID uuid) {
         Log.d(TAG, "startBTConnection: Initalizing RFCOM Bluetooth Connection.");
         mBTConnection.startClient(device, uuid);
+        Toast.makeText(getApplicationContext(),
+                "Connected to " + device.getName(), Toast.LENGTH_LONG).show();
+        toVitalsBtnSetEnabled(true);
     }
 
     public void enableDisableBT() {
@@ -359,6 +320,51 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             mBTDevice = mBTDevicesList.get(i);
             mBTConnection = new BluetoothConnectionService(MainActivity.this);
+            Toast.makeText(getApplicationContext(),
+                    "Paired " + mBTDevice.getName() + ". Press \"Connect\" to continue", Toast.LENGTH_LONG).show();
+            btnStartConnection.setEnabled(true);
+
         }
+    }
+
+    ///////////////////////////////////////////////////////////////
+    ///// Activity Switching //////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
+
+    public ImageButton toVitalsBtn;
+
+    public void onCreateActSwitch() {
+        toVitalsBtn = (ImageButton) findViewById(R.id.btToVitalsBtn);
+        toVitalsBtnSetEnabled(false);
+
+        toVitalsBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent loadNewAct = new Intent(MainActivity.this, LiveVitalsActivity.class);
+                startActivityForResult(loadNewAct, 1);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK) {
+            // do anything from the LiveVitalActivity
+        } else if(resultCode == RESULT_CANCELED) {
+            Toast.makeText(getApplicationContext(), "Live Vital Reading Failed", Toast.LENGTH_LONG).show();
+            toVitalsBtnSetEnabled(false);
+            btnStartConnection.setEnabled(false);
+        }
+    }
+
+    private void toVitalsBtnSetEnabled(boolean enabled) {
+        toVitalsBtn.setEnabled(enabled);
+        toVitalsBtn.setColorFilter(Color.argb((enabled? 0 : 255), 154, 154, 154));
+    }
+
+    public static BluetoothConnectionService getBluetoothConnection(){
+        return mBTConnection;
     }
 }

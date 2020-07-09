@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LiveVitalsActivity">
+
+    <TextView
+        android:id="@+id/incomingMessages"
+        android:layout_width="336dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="20dp"
+        android:background="#03A9F4"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/incoming_data"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientSelection" />
+
+    <ImageButton
+        android:id="@+id/toConnectBtn"
+        android:layout_width="123dp"
+        android:layout_height="44dp"
+        android:contentDescription="@string/go_to_connect_screen"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/to_bt_foreground" />
+
+    <ImageButton
+        android:id="@+id/toRobotBtn"
+        android:layout_width="123dp"
+        android:layout_height="44dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/go_to_robot_control"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/to_arm_ctrl_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="358dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/patient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/patientSelection"
+        android:layout_width="358dp"
+        android:layout_height="50dp"
+        android:background="#EDECEC"
+        android:entries="@array/preloaded_patients"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
