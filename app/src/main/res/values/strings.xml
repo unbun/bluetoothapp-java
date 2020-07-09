@@ -24,12 +24,20 @@
     <string name="wrist_speed">wrist speed</string>
     <string name="elbow_speed">elbow speed</string>
     <string name="patient">Patient</string>
+    <string name="vital_test">Vital Test</string>
 
     <string-array name="devices">
         <item>None (retract arm)</item>
         <item>Stethoscope</item>
         <item>Pulse Oximeter</item>
         <item>Thermometer</item>
+    </string-array>
+
+    <string-array name="tests">
+        <item>Heart rate</item>
+        <item>Blood O2</item>
+        <item>Temperature</item>
+        <item>Lung Audio</item>
     </string-array>
 
     <string-array name="targets">

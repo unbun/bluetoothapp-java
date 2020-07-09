@@ -1,4 +1,4 @@
-package athelas.javableapp;
+package athelas.javableapp.utils;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import athelas.javableapp.R;
 
 
 public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
@@ -24,6 +26,7 @@ public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
         mViewResourceId = tvResourceId;
     }
 
+    // Update The Item View for a device
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = mLayoutInflater.inflate(mViewResourceId, null);
 

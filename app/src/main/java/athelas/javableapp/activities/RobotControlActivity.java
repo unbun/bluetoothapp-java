@@ -4,25 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import athelas.javableapp.BluetoothConnectionService;
+import athelas.javableapp.utils.*;
 import athelas.javableapp.R;
 
 public class RobotControlActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private static String TAG = "RobotControlActivity";
 
     BluetoothConnectionService mBTConnection;
     List<ImageButton> ctrlButtons = new ArrayList<>();
@@ -31,7 +25,6 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
 
     Spinner sTargets;
     ArrayAdapter<CharSequence> targetAdapter;
-
 
 
     /*
@@ -80,8 +73,9 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
                 public void onClick(View view) {
                     String jointName = ctrlBtnOnClick(desc);
                     if(!jointName.isEmpty()) {
-                        Toast.makeText(getApplicationContext(),
-                                "Moving " + jointName, Toast.LENGTH_LONG).show();
+                        Utils.toastMessage(getApplicationContext(), "Moving " + jointName);
+                    } else {
+                        Log.d(TAG, "setOnClickListener: btn description has bad joint label "+ desc);
                     }
                 }
             });
@@ -93,8 +87,7 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onClick(View view) {
                 writeCommand("RTC:ALL");
-                Toast.makeText(getApplicationContext(),
-                        "Retracting", Toast.LENGTH_LONG).show();
+                Utils.toastMessage(getApplicationContext(),"Retracting");
             }
         });
 
@@ -102,9 +95,8 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                writeCommand("STOP:ALL");
-                Toast.makeText(getApplicationContext(),
-                        "Stopping", Toast.LENGTH_LONG).show();
+                writeCommand("STP:ALL");
+                Utils.toastMessage(getApplicationContext(), "Stopping");
             }
         });
 
@@ -136,9 +128,10 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
             } else {
                 jointSpeed = 0.0;
             }
+            Log.d(TAG, "ctrlBtnOnClick: joint and joint speed msg created");
         } catch (NumberFormatException nfe) {
-            Toast.makeText(getApplicationContext(),
-                    "Specify Joint Speed (deg/sec)", Toast.LENGTH_LONG).show();
+            Log.d(TAG, "ctrlBtnOnClick: canceled bc no valid joint speed");
+            Utils.toastMessage(getApplicationContext(), "Specify Joint Speed (deg/sec)");
             return "";
         }
 
@@ -148,6 +141,7 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Log.d(TAG, "onItemSelected: activating preset robot movement");
         String target = targetAdapter.getItem(i).toString();
         String cmdString = "TRK:";
         switch (target.toLowerCase()){
@@ -157,7 +151,7 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
             break;
             case "hand" : cmdString += "HAND";
             break;
-            case "none (stop)" : cmdString = "STOP:ALL";
+            case "none (stop)" : cmdString = "STP:ALL";
             break;
             default: cmdString = "RTC:ALL";
         }
@@ -170,6 +164,7 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
     }
 
     private void writeCommand(String cmdString) {
+        Log.d(TAG, "writeCommand: writing to bt connection");
         byte[] bytes = cmdString.getBytes(Charset.defaultCharset());
         mBTConnection.write(bytes);
     }
@@ -185,6 +180,7 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
     public ImageButton toVitalsBtn;
 
     public void onCreateActSwitch() {
+        Log.d(TAG, "onCreateActSwitch: returning from robot ctr activity");
         toVitalsBtn = (ImageButton) findViewById(R.id.rbtToVitalsBtn);
         toVitalsBtn.setOnClickListener( new View.OnClickListener() {
 
