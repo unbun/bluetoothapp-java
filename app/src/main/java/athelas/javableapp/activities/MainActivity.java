@@ -25,8 +25,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import athelas.javableapp.BluetoothConnectionService;
-import athelas.javableapp.DeviceListAdapter;
+import athelas.javableapp.utils.BluetoothConnectionService;
+import athelas.javableapp.utils.DeviceListAdapter;
 import athelas.javableapp.R;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {

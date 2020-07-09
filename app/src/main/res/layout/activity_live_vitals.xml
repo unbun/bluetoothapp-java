@@ -9,9 +9,9 @@
     <TextView
         android:id="@+id/incomingMessages"
         android:layout_width="336dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="20dp"
-        android:background="#03A9F4"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="#E91E63"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -20,7 +20,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patientSelection" />
+        app:layout_constraintTop_toBottomOf="@+id/testSelection" />
 
     <ImageButton
         android:id="@+id/toConnectBtn"
@@ -47,11 +47,21 @@
         android:id="@+id/textView"
         android:layout_width="358dp"
         android:layout_height="22dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="50dp"
         android:text="@string/patient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="358dp"
+        android:layout_height="22dp"
+        android:text="@string/vital_test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientSelection" />
 
     <Spinner
         android:id="@+id/patientSelection"
@@ -63,5 +73,27 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Spinner
+        android:id="@+id/testSelection"
+        android:layout_width="358dp"
+        android:layout_height="50dp"
+        android:background="#EDECEC"
+        android:entries="@array/tests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/vitalGraph"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/incomingMessages"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

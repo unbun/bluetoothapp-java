@@ -1,4 +1,4 @@
-package athelas.javableapp;
+package athelas.javableapp.utils;
 
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
