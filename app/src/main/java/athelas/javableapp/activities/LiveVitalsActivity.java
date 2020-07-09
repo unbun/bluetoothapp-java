@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -87,11 +88,11 @@ public class LiveVitalsActivity extends AppCompatActivity {
     ///// Activity Switching //////////////////////////////////////
     ///////////////////////////////////////////////////////////////
 
-    public Button toConnectBtn;
-    public Button toRobotCtrlBtn;
+    public ImageButton toConnectBtn;
+    public ImageButton toRobotCtrlBtn;
 
     public void onCreateActSwitch() {
-        toConnectBtn = (Button) findViewById(R.id.toConnectBtn);
+        toConnectBtn = (ImageButton) findViewById(R.id.toConnectBtn);
         toConnectBtn.setOnClickListener( new View.OnClickListener() {
 
             @Override
@@ -102,7 +103,7 @@ public class LiveVitalsActivity extends AppCompatActivity {
             }
         });
 
-        toRobotCtrlBtn  = (Button) findViewById(R.id.toRobotBtn);
+        toRobotCtrlBtn  = (ImageButton) findViewById(R.id.toRobotBtn);
         toRobotCtrlBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

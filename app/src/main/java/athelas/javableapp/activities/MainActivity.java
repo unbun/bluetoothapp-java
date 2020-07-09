@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -329,10 +330,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ///// Activity Switching //////////////////////////////////////
     ///////////////////////////////////////////////////////////////
 
-    public Button toLiveDataBtn;
+    public ImageButton toLiveDataBtn;
 
     public void onCreateActSwitch() {
-        toLiveDataBtn = (Button) findViewById(R.id.btToVitalsBtn);
+        toLiveDataBtn = (ImageButton) findViewById(R.id.btToVitalsBtn);
         toLiveDataBtn.setEnabled(false);
         toLiveDataBtn.setOnClickListener( new View.OnClickListener() {
 

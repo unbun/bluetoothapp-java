@@ -54,19 +54,21 @@
         app:layout_constraintStart_toEndOf="@+id/btnSend"
         app:layout_constraintTop_toBottomOf="@+id/incomingMessages" />
 
-    <Button
+    <ImageButton
         android:id="@+id/toConnectBtn"
-        android:layout_width="103dp"
-        android:layout_height="50dp"
-        android:text="@string/connect"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:contentDescription="@string/go_to_connect_screen"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/to_bt_foreground" />
 
-    <Button
+    <ImageButton
         android:id="@+id/toRobotBtn"
-        android:layout_width="103dp"
-        android:layout_height="50dp"
-        android:text="@string/robot"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:contentDescription="@string/go_to_robot_control"
+        android:src="@mipmap/to_robotCtrl_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

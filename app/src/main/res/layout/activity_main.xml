@@ -26,7 +26,7 @@
         android:id="@+id/enableDisableBT"
         android:layout_width="118dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="120dp"
         android:text="@string/toggle_bt"
         android:textSize="10sp"
         app:layout_constraintEnd_toStartOf="@+id/enableDisableDiscoverable"
@@ -56,12 +56,12 @@
         android:layout_below="@id/btnFindUnpairedDevices"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#1566A6"
         app:layout_constraintEnd_toEndOf="@+id/enableDisableDiscoverable"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/enableDisableDiscoverable"
         app:layout_constraintTop_toBottomOf="@+id/enableDisableDiscoverable" />
 
@@ -78,16 +78,6 @@
         app:layout_constraintStart_toStartOf="@+id/lvNewDevices"
         app:layout_constraintTop_toBottomOf="@+id/lvNewDevices" />
 
-    <Button
-        android:id="@+id/btToVitalsBtn"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="4dp"
-        android:adjustViewBounds="false"
-        android:text="@string/live_vitals_cont"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/connectionInstructions"
         android:layout_width="262dp"
@@ -102,6 +92,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStartConnection" />
+
+    <ImageButton
+        android:id="@+id/btToVitalsBtn"
+        android:layout_width="123dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/go_to_vitals"
+        android:rotationY="180"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/back_to_vitals_foreground" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,22 +6,205 @@
     android:layout_height="match_parent"
     tools:context=".activities.RobotControlActivity">
 
-    <Button
-        android:id="@+id/rbtToVitalsBtn"
-        android:layout_width="141dp"
-        android:layout_height="50dp"
-        android:text="@string/live_vitals_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/controlGroup1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/robot_control_page"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:constraint_referenced_ids="robotView1,ctrlBtn_j0Pos,ctrlBtn_j1Neg,ctrlBtn_j1Pos,ctrlBtn_j0Neg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/robotView1"
+        android:layout_width="154dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="72dp"
+        android:contentDescription="@string/robotView1Des"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toConnectBtn2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/arm_view_1_foreground" />
+
+    <ImageButton
+        android:id="@+id/ctrlBtn_j0Neg"
+        android:layout_width="146dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/j0NegBtnDes"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        android:tint="#474042"
+        app:layout_constraintEnd_toEndOf="@+id/robotView1"
+        app:layout_constraintTop_toTopOf="@+id/robotView1"
+        app:srcCompat="@mipmap/curved_arrow_foreground" />
+
+    <ImageButton
+        android:id="@+id/ctrlBtn_j0Pos"
+        android:layout_width="146dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="64dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/j0PosBtnDes"
+        android:padding="20dp"
+        android:rotationY="180"
+        android:scaleType="fitCenter"
+        android:tint="#474042"
+        app:layout_constraintStart_toStartOf="@+id/robotView1"
+        app:layout_constraintTop_toTopOf="@+id/robotView1"
+        app:srcCompat="@mipmap/curved_arrow_foreground" />
+
+    <ImageButton
+        android:id="@+id/ctrlBtn_j1Neg"
+        android:layout_width="95dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/j1NegBtnDes"
+        android:padding="20dp"
+        android:rotation="90"
+        android:scaleType="fitCenter"
+        android:tint="#00BCD4"
+        app:layout_constraintEnd_toEndOf="@+id/robotView1"
+        app:layout_constraintTop_toTopOf="@+id/robotView1"
+        app:srcCompat="@mipmap/curved_arrow_foreground" />
+
+    <ImageButton
+        android:id="@+id/ctrlBtn_j1Pos"
+        android:layout_width="95dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/j1PosBtnDes"
+        android:padding="20dp"
+        android:rotation="90"
+        android:rotationY="180"
+        android:scaleType="fitCenter"
+        android:tint="#00BCD4"
+        app:layout_constraintStart_toStartOf="@+id/robotView1"
+        app:layout_constraintTop_toTopOf="@+id/robotView1"
+        app:srcCompat="@mipmap/curved_arrow_foreground" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/controlGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="ctrlBtn_j3Pos,ctrlBtn_j2Neg,robotView2,ctrlBtn_j3Neg,ctrlBtn_j2Pos" />
+
+    <ImageView
+        android:id="@+id/robotView2"
+        android:layout_width="162dp"
+        android:layout_height="168dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/robotView2Des"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ctrlBtn_j0Neg"
+        app:srcCompat="@mipmap/arm_view_2_foreground" />
+
+    <ImageButton
+        android:id="@+id/ctrlBtn_j2Pos"
+        android:layout_width="96dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/j2PosBtnDes"
+        android:padding="20dp"
+        android:rotation="45"
+        android:rotationY="180"
+        android:scaleType="fitCenter"
+        android:tint="#2196F3"
+        app:layout_constraintEnd_toEndOf="@+id/robotView2"
+        app:layout_constraintTop_toTopOf="@+id/robotView2"
+        app:srcCompat="@mipmap/curved_arrow_foreground" />
+
+    <ImageButton
+        android:id="@+id/ctrlBtn_j2Neg"
+        android:layout_width="96dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginRight="120dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/j2NegBtnDes"
+        android:padding="20dp"
+        android:rotation="135"
+        android:scaleType="fitCenter"
+        android:tint="#2196F3"
+        app:layout_constraintEnd_toEndOf="@+id/robotView2"
+        app:layout_constraintTop_toTopOf="@+id/robotView2"
+        app:srcCompat="@mipmap/curved_arrow_foreground" />
+
+    <ImageButton
+        android:id="@+id/ctrlBtn_j3Pos"
+        android:layout_width="96dp"
+        android:layout_height="116dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="44dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/j3PosBtnDes"
+        android:padding="20dp"
+        android:rotation="45"
+        android:rotationY="180"
+        android:scaleType="fitCenter"
+        android:tint="#3F51B5"
+        app:layout_constraintStart_toStartOf="@+id/robotView2"
+        app:layout_constraintTop_toTopOf="@+id/robotView2"
+        app:srcCompat="@mipmap/curved_arrow_foreground" />
+
+    <ImageButton
+        android:id="@+id/ctrlBtn_j3Neg"
+        android:layout_width="96dp"
+        android:layout_height="116dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="60dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/j3NegBtnDes"
+        android:padding="20dp"
+        android:rotation="135"
+        android:scaleType="fitCenter"
+        android:tint="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="@+id/robotView2"
+        app:layout_constraintEnd_toEndOf="@+id/robotView2"
+        app:srcCompat="@mipmap/curved_arrow_foreground" />
+
+    <ImageButton
+        android:id="@+id/rbtToVitalsBtn"
+        android:layout_width="118dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/go_to_vitals"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/back_to_vitals_foreground" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

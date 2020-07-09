@@ -13,6 +13,9 @@
     <string name="connection_instructions">Step 1) Turn Bluetooth on\nStep 2) Enable Discovery\nStep 3) Search for Devices\nStep 4) Select Device To Pair\nStep 5) Start Connection</string>
     <string name="robot"><![CDATA[Robot >]]></string>
     <string name="robot_control_page">Robot Control Page</string>
+    <string name="go_to_vitals">Go To Vitals</string>
+    <string name="go_to_connect_screen">Go To Connect Screen</string>
+    <string name="go_to_robot_control">Go To Robot Control</string>
 
     <string-array name="devices">
         <item>None (retract arm)</item>
