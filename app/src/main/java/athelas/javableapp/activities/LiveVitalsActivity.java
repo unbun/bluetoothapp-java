@@ -65,6 +65,8 @@ public class LiveVitalsActivity extends AppCompatActivity implements AdapterView
             boolean completedMessage = false;
             readMessages.append(text);
             if(readMessages.toString().endsWith("EOF")){
+                // BUGFIX: sometimes two files still collide as one, then their numbers
+                // get concat-ed in the regex
                 readMessages.setLength(readMessages.length() - 3);
                 completedMessage = true;
             }
@@ -145,8 +147,8 @@ public class LiveVitalsActivity extends AppCompatActivity implements AdapterView
 
     private void createScatterPlot() {
         Log.d(TAG, "createScatterPlog: Creating scatter plot.");
-        
-        heartValues = Utils.sortArrayByX(currXYValues);
+
+        currXYValues = Utils.sortArrayByX(currXYValues);
 
         double maxX = 0;
         for(int ii = 0; ii < currXYValues.size(); ii++) {
