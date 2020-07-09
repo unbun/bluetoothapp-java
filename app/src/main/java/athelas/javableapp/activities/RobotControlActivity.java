@@ -6,21 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import athelas.javableapp.utils.BluetoothConnectionService;
+import athelas.javableapp.utils.*;
 import athelas.javableapp.R;
-import athelas.javableapp.utils.Utils;
 
 public class RobotControlActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static String TAG = "RobotControlActivity";
@@ -80,8 +73,7 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
                 public void onClick(View view) {
                     String jointName = ctrlBtnOnClick(desc);
                     if(!jointName.isEmpty()) {
-                        Toast.makeText(getApplicationContext(),
-                                "Moving " + jointName, Toast.LENGTH_LONG).show();
+                        Utils.toastMessage(getApplicationContext(), "Moving " + jointName);
                     } else {
                         Log.d(TAG, "setOnClickListener: btn description has bad joint label "+ desc);
                     }
@@ -95,8 +87,7 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onClick(View view) {
                 writeCommand("RTC:ALL");
-                Toast.makeText(getApplicationContext(),
-                        "Retracting", Toast.LENGTH_LONG).show();
+                Utils.toastMessage(getApplicationContext(),"Retracting");
             }
         });
 
@@ -105,7 +96,7 @@ public class RobotControlActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onClick(View view) {
                 writeCommand("STP:ALL");
-                Utils.toastMessage(getApplication(), "Stopping");
+                Utils.toastMessage(getApplicationContext(), "Stopping");
             }
         });
 

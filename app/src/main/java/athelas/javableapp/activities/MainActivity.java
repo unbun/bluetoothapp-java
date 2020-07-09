@@ -9,25 +9,17 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.*;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ListView;
+import android.widget.*;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-import athelas.javableapp.utils.BluetoothConnectionService;
-import athelas.javableapp.utils.DeviceListAdapter;
+import athelas.javableapp.utils.*;
 import athelas.javableapp.R;
-import athelas.javableapp.utils.Utils;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String TAG = "MainActivity";

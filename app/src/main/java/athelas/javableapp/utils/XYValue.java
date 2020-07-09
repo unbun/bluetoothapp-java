@@ -1,5 +1,9 @@
 package athelas.javableapp.utils;
 
+
+/**
+ * Simple sortable tuple class
+ */
 public class XYValue {
     private double x;
     private double y;

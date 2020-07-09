@@ -4,33 +4,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.*;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import athelas.javableapp.utils.BluetoothConnectionService;
 import athelas.javableapp.R;
-import athelas.javableapp.utils.Utils;
-import athelas.javableapp.utils.XYValue;
+import athelas.javableapp.utils.*;
 
 public class LiveVitalsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     public static String TAG = "LiveVitalsActivity";
@@ -146,7 +135,7 @@ public class LiveVitalsActivity extends AppCompatActivity implements AdapterView
     }
 
     private void createScatterPlot() {
-        Log.d(TAG, "createScatterPlog: Creating scatter plot.");
+        Log.d(TAG, "createScatterPlot: Creating scatter plot.");
 
         currXYValues = Utils.sortArrayByX(currXYValues);
 

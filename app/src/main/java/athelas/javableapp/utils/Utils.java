@@ -9,10 +9,20 @@ import java.util.ArrayList;
 public class Utils {
     private static String TAG = "Utils";
 
+    /**
+     * Display a Toast Message
+     * @param contex use getApplicationContext()
+     * @param msg the message to display
+     */
     public static void toastMessage(Context contex, String msg) {
         Toast.makeText(contex, msg, Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * Sorts the xyValues in Ascending order to prepare them for the PointsGraphSeries<DataSet>
+     * @param
+     * @return
+     */
     public static ArrayList<XYValue> sortArrayByX(ArrayList<XYValue> array) {
         /*
         //Sorts the xyValues in Ascending order to prepare them for the PointsGraphSeries<DataSet>
