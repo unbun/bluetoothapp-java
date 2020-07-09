@@ -32,7 +32,8 @@
     </string-array>
 
     <string-array name="targets">
-        <item>None (retract arm)</item>
+        <item>None (Stop)</item>
+        <item>None (Retract)</item>
         <item>Forehead</item>
         <item>Chest</item>
         <item>Hand</item>

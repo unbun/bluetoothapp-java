@@ -230,7 +230,6 @@
         android:layout_width="151dp"
         android:layout_height="45dp"
         android:autofillHints="deg/sec"
-        android:background="#00FFFFFF"
         android:ems="10"
         android:hint="@string/tilt_speed"
         android:inputType="number"
