@@ -20,7 +20,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -28,6 +27,7 @@ import java.util.UUID;
 import athelas.javableapp.utils.BluetoothConnectionService;
 import athelas.javableapp.utils.DeviceListAdapter;
 import athelas.javableapp.R;
+import athelas.javableapp.utils.Utils;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private static final String TAG = "MainActivity";
@@ -212,8 +212,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void startBTConnection(BluetoothDevice device, UUID uuid) {
         Log.d(TAG, "startBTConnection: Initalizing RFCOM Bluetooth Connection.");
         mBTConnection.startClient(device, uuid);
-        Toast.makeText(getApplicationContext(),
-                "Connected to " + device.getName(), Toast.LENGTH_LONG).show();
+        Utils.toastMessage(getApplicationContext(),"Connected to " + device.getName());
         toVitalsBtnSetEnabled(true);
     }
 
@@ -320,8 +319,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             mBTDevice = mBTDevicesList.get(i);
             mBTConnection = new BluetoothConnectionService(MainActivity.this);
-            Toast.makeText(getApplicationContext(),
-                    "Paired " + mBTDevice.getName() + ". Press \"Connect\" to continue", Toast.LENGTH_LONG).show();
+            Utils.toastMessage(getApplicationContext(),
+                    "Paired " + mBTDevice.getName() + ". Press \"Connect\" to continue");
             btnStartConnection.setEnabled(true);
 
         }
@@ -341,6 +340,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "onCreateActSwitch: switching to LiveVitalsActivity");
                 Intent loadNewAct = new Intent(MainActivity.this, LiveVitalsActivity.class);
                 startActivityForResult(loadNewAct, 1);
             }
@@ -351,9 +351,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK) {
+            Log.d(TAG, "onActivityResult: returned from LiveVitalsActivity");
             // do anything from the LiveVitalActivity
         } else if(resultCode == RESULT_CANCELED) {
-            Toast.makeText(getApplicationContext(), "Live Vital Reading Failed", Toast.LENGTH_LONG).show();
+            Log.d(TAG, "onActivityResult: returned from failed LiveVitalsActivity");
+            Utils.toastMessage(getApplicationContext(), "Live Vital Reading Failed");
             toVitalsBtnSetEnabled(false);
             btnStartConnection.setEnabled(false);
         }
