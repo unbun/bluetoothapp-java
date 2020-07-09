@@ -23,8 +23,6 @@ import athelas.javableapp.R;
 
 public class LiveVitalsActivity extends AppCompatActivity {
 
-    Button btnSend;
-    EditText etSend;
     TextView tvIncomingMessages;
     StringBuilder readMessages;
 
@@ -62,23 +60,11 @@ public class LiveVitalsActivity extends AppCompatActivity {
 
         readMessages = new StringBuilder();
 
-        btnSend = (Button) findViewById(R.id.btnSend);
-        etSend = (EditText) findViewById(R.id.editText);
         tvIncomingMessages = (TextView) findViewById(R.id.incomingMessages);
 
         //Use local broadcast manager to recieve incoming messages
         LocalBroadcastManager.getInstance(this).registerReceiver(mReadReciever, new IntentFilter("incomingMessage"));
 
-        // when you want to send text to the connection service
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                byte[] bytes = etSend.getText().toString().getBytes(Charset.defaultCharset());
-                mBTConnection.write(bytes);
-
-                etSend.setText("");
-            }
-        });
     }
 
 
