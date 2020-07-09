@@ -18,19 +18,18 @@
         android:id="@+id/robotView1"
         android:layout_width="154dp"
         android:layout_height="160dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:contentDescription="@string/robotView1Des"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/arm_view_1_foreground" />
 
     <ImageButton
         android:id="@+id/ctrlBtn_j0Neg"
-        android:layout_width="146dp"
-        android:layout_height="148dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="109dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="72dp"
         android:layout_marginRight="72dp"
         android:layout_weight="1"
@@ -46,11 +45,11 @@
 
     <ImageButton
         android:id="@+id/ctrlBtn_j0Pos"
-        android:layout_width="146dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="109dp"
+        android:layout_height="133dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="72dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:background="#00FFFFFF"
@@ -112,20 +111,18 @@
         android:id="@+id/robotView2"
         android:layout_width="162dp"
         android:layout_height="168dp"
-        android:layout_marginTop="8dp"
         android:contentDescription="@string/robotView2Des"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ctrlBtn_j0Neg"
+        app:layout_constraintTop_toBottomOf="@+id/ctrlBtn_j0Pos"
         app:srcCompat="@mipmap/arm_view_2_foreground" />
 
     <ImageButton
         android:id="@+id/ctrlBtn_j2Pos"
         android:layout_width="96dp"
         android:layout_height="116dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:background="#00FFFFFF"
@@ -143,9 +140,9 @@
         android:id="@+id/ctrlBtn_j2Neg"
         android:layout_width="96dp"
         android:layout_height="116dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginRight="120dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:background="#00FFFFFF"
@@ -199,12 +196,118 @@
 
     <ImageButton
         android:id="@+id/rbtToVitalsBtn"
-        android:layout_width="118dp"
-        android:layout_height="61dp"
+        android:layout_width="123dp"
+        android:layout_height="44dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/go_to_vitals"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/back_to_vitals_foreground" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="349dp"
+        android:layout_height="146dp"
+        android:background="#C5C1C1"
+        android:contentDescription="@string/camera_feed_filler"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/temp_connected_camera_icon"
+        tools:ignore="VectorDrawableCompat" />
+
+    <Spinner
+        android:id="@+id/targetSpinner"
+        android:layout_width="210dp"
+        android:layout_height="0dp"
+        android:entries="@array/targets"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTiltSpeed"
+        android:layout_width="151dp"
+        android:layout_height="45dp"
+        android:autofillHints="deg/sec"
+        android:background="#00FFFFFF"
+        android:ems="10"
+        android:hint="@string/tilt_speed"
+        android:inputType="number"
+        android:textColor="#03A9F4"
+        android:textColorHint="#8003A9F4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbtToVitalsBtn"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/editBaseSpeed"
+        android:layout_width="151dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints="deg/sec"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/base_speed"
+        android:textColor="#232B2E"
+        android:textColorHint="#80232B2E"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTiltSpeed"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/editWristSpeed"
+        android:layout_width="151dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="48dp"
+        android:autofillHints="deg/sec"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/wrist_speed"
+        android:textColor="#3F51B5"
+        android:textColorHint="#E63F51B5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editBaseSpeed"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/editElbowSpeed"
+        android:layout_width="151dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        android:autofillHints="deg/sec"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/elbow_speed"
+        android:textColor="#2196F3"
+        android:textColorHint="#B32196F3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editWristSpeed"
+        tools:ignore="LabelFor" />
+
+    <Button
+        android:id="@+id/stopBtn"
+        android:layout_width="67dp"
+        android:layout_height="0dp"
+        android:text="@string/stop"
+        android:textColor="#E91E63"
+        app:layout_constraintBottom_toBottomOf="@+id/targetSpinner"
+        app:layout_constraintEnd_toStartOf="@+id/retractBtn" />
+
+    <Button
+        android:id="@+id/retractBtn"
+        android:layout_width="85dp"
+        android:layout_height="0dp"
+        android:text="@string/retract"
+        android:textColor="#FF5722"
+        app:layout_constraintBottom_toBottomOf="@+id/stopBtn"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

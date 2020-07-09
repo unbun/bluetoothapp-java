@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -51,10 +52,10 @@ public class RobotControlActivity extends AppCompatActivity {
     ///// Activity Switching //////////////////////////////////////
     ///////////////////////////////////////////////////////////////
 
-    public Button toVitalsBtn;
+    public ImageButton toVitalsBtn;
 
     public void onCreateActSwitch() {
-        toVitalsBtn = (Button) findViewById(R.id.rbtToVitalsBtn);
+        toVitalsBtn = (ImageButton) findViewById(R.id.rbtToVitalsBtn);
         toVitalsBtn.setOnClickListener( new View.OnClickListener() {
 
             @Override

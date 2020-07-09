@@ -96,10 +96,12 @@
     <ImageButton
         android:id="@+id/btToVitalsBtn"
         android:layout_width="123dp"
-        android:layout_height="63dp"
+        android:layout_height="44dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/go_to_vitals"
         android:rotationY="180"
+        android:scaleType="centerCrop"
+        android:tint="#FD9A9A9A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/back_to_vitals_foreground" />

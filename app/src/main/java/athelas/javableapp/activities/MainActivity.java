@@ -3,6 +3,7 @@ package athelas.javableapp.activities;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -213,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mBTConnection.startClient(device, uuid);
         Toast.makeText(getApplicationContext(),
                 "Connected to " + device.getName(), Toast.LENGTH_LONG).show();
-        toLiveDataBtn.setEnabled(true);
+        toVitalsBtnSetEnabled(true);
     }
 
     public void enableDisableBT() {
@@ -330,12 +331,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ///// Activity Switching //////////////////////////////////////
     ///////////////////////////////////////////////////////////////
 
-    public ImageButton toLiveDataBtn;
+    public ImageButton toVitalsBtn;
 
     public void onCreateActSwitch() {
-        toLiveDataBtn = (ImageButton) findViewById(R.id.btToVitalsBtn);
-        toLiveDataBtn.setEnabled(false);
-        toLiveDataBtn.setOnClickListener( new View.OnClickListener() {
+        toVitalsBtn = (ImageButton) findViewById(R.id.btToVitalsBtn);
+        toVitalsBtnSetEnabled(false);
+
+        toVitalsBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -352,9 +354,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             // do anything from the LiveVitalActivity
         } else if(resultCode == RESULT_CANCELED) {
             Toast.makeText(getApplicationContext(), "Live Vital Reading Failed", Toast.LENGTH_LONG).show();
-            toLiveDataBtn.setEnabled(false);
+            toVitalsBtnSetEnabled(false);
             btnStartConnection.setEnabled(false);
         }
+    }
+
+    private void toVitalsBtnSetEnabled(boolean enabled) {
+        toVitalsBtn.setEnabled(enabled);
+        toVitalsBtn.setColorFilter(Color.argb((enabled? 0 : 255), 154, 154, 154));
     }
 
     public static BluetoothConnectionService getBluetoothConnection(){

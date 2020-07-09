@@ -16,11 +16,25 @@
     <string name="go_to_vitals">Go To Vitals</string>
     <string name="go_to_connect_screen">Go To Connect Screen</string>
     <string name="go_to_robot_control">Go To Robot Control</string>
+    <string name="camera_feed_filler">camera_feed_filler</string>
+    <string name="tilt_speed">tilt speed</string>
+    <string name="retract">Retract</string>
+    <string name="stop">Stop</string>
+    <string name="base_speed">base speed</string>
+    <string name="wrist_speed">wrist speed</string>
+    <string name="elbow_speed">elbow speed</string>
 
     <string-array name="devices">
         <item>None (retract arm)</item>
         <item>Stethoscope</item>
         <item>Pulse Oximeter</item>
         <item>Thermometer</item>
+    </string-array>
+
+    <string-array name="targets">
+        <item>None (retract arm)</item>
+        <item>Forehead</item>
+        <item>Chest</item>
+        <item>Hand</item>
     </string-array>
 </resources>
